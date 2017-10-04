@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Masse tall</title>
+    <script>
+    //Console log får et hardt vær på seg i denne oppgaven
+    //beklager så meget for spammen der
+    //I tillegg synes jeg at en knapp for hver ting ble litt fint og oversiktlig i den grad minimalisme er tillatt
+      window.onload = oppstart;
+
+      function oppstart(){
+        document.getElementById("btnForlengs").onclick = utskriftForlengs;
+        document.getElementById("btnBaklengs").onclick = utskriftBaklengs;
+        document.getElementById("btnDele").onclick = utskriftDele;
+        document.getElementById("btnDele3").onclick = utskriftDele3;
+        document.getElementById("btnPartall").onclick = utskriftPartall;
+        document.getElementById("btnOddetall").onclick = utskriftOddetall;
+        document.getElementById("btnPosNeg").onclick = utskriftPosNeg;
+      }
+
+      function utskriftForlengs() {
+
+        for (var i = 0; i <= 100; i++) {
+          console.log(i) //Det funker!!!
+          document.getElementById("forlengs").innerHTML += i + " ";
+        }
+      }
+
+      function utskriftBaklengs() {
+
+        for (var i = 100; i >= 0; i-= 1) { //istedenfor pluss så er det minus
+          console.log(i); //Dette funker også!!
+          document.getElementById("baklengs").innerHTML += i + " ";
+        }
+      }
+
+      function utskriftDele(){
+
+        for (var i = 0; i <= 100; i++) {
+          var j = i / 2; //Tips, det funker ikke med modulo... Men det funker nå!
+          console.log(j);
+          document.getElementById("dele").innerHTML += j + " ";
+        }
+      }
+
+      function utskriftDele3(){
+
+        for (var i = 0; i <= 100 ; i++) {
+          var j = i % 3 == 0;
+          if (j === true) {
+            document.getElementById("dele3").innerHTML += i + " ";
+          }
+          console.log(j);
+        }
+      }
+
+      function utskriftPartall() {
+
+        for (var i = 0; i <= 100; i++) {
+          if (i % 2 === 0) {
+            document.getElementById("partall").innerHTML += i + " ";
+          }
+        }
+      }
+
+      function utskriftOddetall() {
+
+        for (var i = 0; i <= 100; i++) {
+          if ((i % 2) === 0) {
+              console.log(i); //if'en må ha ting der for å falle for else :)
+          }
+          else {
+            document.getElementById("oddetall").innerHTML += i + " ";
+          }
+        }
+      }
+
+      function utskriftPosNeg() {
+
+        var skriv = "";
+
+        for (var i = 0; i <= 100; i++) {
+          if (i % 2 === 0) {
+            skriv += i + " ";
+          }
+          else {
+            skriv += "-" + i + " ";
+          }
+        }
+
+        document.getElementById("posneg").innerHTML= skriv;
+      }
+    </script>
+  </head>
+  <body>
+    <h3>Skriv ut:</h3>
+    <button id="btnForlengs" type="button">Forlengs</button>
+    <p id="forlengs"></p>
+    <button id="btnBaklengs" type="button">Baklengs</button>
+    <p id="baklengs"></p>
+    <button id="btnDele" type="button">Dele på 2</button>
+    <p id="dele"></p>
+    <button id="btnDele3" type="button">Delelig på 3</button>
+    <p id="dele3"></p>
+    <button id="btnPartall" type="button">Partall</button>
+    <p id="partall"></p>
+    <button id="btnOddetall" type="button">Oddetall</button>
+    <p id="oddetall"></p>
+    <button id="btnPosNeg" type="button">Pos og Neg</button>
+    <p id="posneg"></p>
+  </body>
+</html>

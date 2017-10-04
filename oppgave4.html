@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>¯\_(ツ)_/¯</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script>
+// <link rel="stylesheet" type="text/css" href="oppg4.css">
+      window.onload = oppstart;
+
+      function oppstart() {
+        dato();
+        naa();
+      }
+
+      function naa(){
+        var tid = new Date();
+        var h = tid.getHours();
+        var m = tid.getMinutes();
+        var s = tid.getSeconds();
+
+        m = sjekkTid(m);
+        s = sjekkTid(s);
+
+        var bilde = ["bilder/godmorgen.jpg", "bilder/godettermiddag.jpg", "bilder/godkveld.jpg", "bilder/godnatt.jpg", "bilder/nei.jpg"]
+
+        document.getElementById("Klokka").innerHTML = h + ":" + m + ":" + s;
+        var t = setTimeout(naa, 1000); //for å ikke drepe nettsiden samt oppdatere klokka
+
+        if (h >=7 && h <=11) {
+          document.getElementById("Hilsen").innerHTML = "God morgen!";
+          document.getElementById("bg").src = bilde[0];
+        }
+        else if (h >=12 && h <=17) {
+          document.getElementById("Hilsen").innerHTML = "God ettermiddag!";
+          document.getElementById("bg").src = bilde[1];
+        }
+        else if (h >=18 && h <=22) {
+          document.getElementById("Hilsen").innerHTML = "God kveld!";
+          document.getElementById("bg").src = bilde[2];
+        }
+        else if (h >=4 && h <=6) {
+          document.getElementById("Hilsen").innerHTML = "Du burde ikke eksistere på denne tiden av døgnet...";
+          document.getElementById("bg").src = bilde[4];
+        }
+        else {
+          document.getElementById("Hilsen").innerHTML = "God natt!";
+          document.getElementById("bg").src = bilde[3]; //her var det tricky, men det "funker"
+          //Saken er at den ble rar mellom 2300 og 0400, om du vet hvorfor pls halp selv om det funker lol
+        }
+
+      }
+
+      function sjekkTid(i){
+        if (i < 10) { i = "0" + i};
+        return i;
+      }
+
+      function dato(){
+        var naaDato = new Date();
+
+        document.getElementById("Dato2").innerHTML = naaDato.toDateString();
+      }
+
+      //Foto fra Unsplash
+      /* Akkurat nå ser alt greit ut alt funker unntatt bakgrunnsbildet som av idiotiske grunner ikke klarer
+      å plassere seg ordentlig uten å tulle til så jeg har tvunget den i posisjon, samt teksten. The strugge is real */
+    </script>
+  </head>
+  <body>
+    <img id="bg" src="">
+        <p id="Klokka"></p><br/>
+        <p id="Dato2"></p><br/>
+        <p id="Hilsen"></p>
+    </img>
+  </body>
+</html>
